@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Login from './Component/Login'
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <login/>
+    </div>
   )
 }
 

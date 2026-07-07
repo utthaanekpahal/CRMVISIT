@@ -1,33 +1,37 @@
-import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Component/Login";
 import Dashboard from "./Component/Dashboard";
-import Header from "./Component/Header";
-import { Routes, Route, Navigate } from "react-router-dom";
+import Form from "./Component/Form";
+import SchoolDetails from "./Component/SchoolDetails";
+import AcedemicDetails from "./Component/AcedemicDetails";
+import VisitDetails from "./Component/VisitDetails";
+import Summary from "./Component/Summary";
 import ProtectedRoute from "./Component/ProtectedRoute";
+import DashboardLayout from "./Component/Layout";
 
-const App = () => {
+function App() {
   return (
     <Routes>
-      {/* Login Page (No Header) */}
       <Route path="/" element={<Login />} />
 
-      {/* Dashboard Page (With Header) */}
       <Route
-  path="/dashboard"
-  element={
-    <ProtectedRoute>
-      <>
-        <Header />
-        <Dashboard />
-      </>
-    </ProtectedRoute>
-  }
-/>
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/school-details" element={<SchoolDetails />} />
+        <Route path="/AcedemicDetails" element={<AcedemicDetails />} />
+        <Route path="/visitDetails" element={<VisitDetails />} />
+        <Route path="/Summary" element={<Summary />} />
+      </Route>
 
-      {/* Redirect Unknown Routes */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
-};
+}
 
 export default App;

@@ -32,9 +32,6 @@ const { updateFormData } = useFormData();
     "Vice Principal",
     "Coordinator",
     "Teacher",
-    "Counsellor",
-    "Management",
-    "Office Staff",
     "Other",
   ];
 

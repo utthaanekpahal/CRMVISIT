@@ -51,6 +51,21 @@ const { formData, allVisits, saveVisit } = useFormData();
 
         Class: academic.className || "",
         Stream: academic.stream || "",
+        Subjects:
+  academic.subjects
+    ?.map(
+      (item) =>
+        `${item.subject === "Other" ? item.customSubject : item.subject} (Qty: ${item.quantity})`
+    )
+    .join(", ") || "",
+
+SampleBooks:
+  academic.sampleBooks
+    ?.map(
+      (book) =>
+        `${book.bookName === "Other" ? book.customBook : book.bookName} (Qty: ${book.quantity})`
+    )
+    .join(", ") || "",
 
         VisitDate: visit.visitDate || "",
         VisitTime: visit.visitTime || "",
@@ -119,6 +134,23 @@ const { formData, allVisits, saveVisit } = useFormData();
 
         ["Class", academic.className || ""],
         ["Stream", academic.stream || ""],
+        ["Subjects",
+  academic.subjects
+    ?.map(
+      (item) =>
+        `${item.subject === "Other" ? item.customSubject : item.subject} (Qty: ${item.quantity})`
+    )
+    .join("\n") || "",
+],
+
+["Sample Books",
+  academic.sampleBooks
+    ?.map(
+      (book) =>
+        `${book.bookName === "Other" ? book.customBook : book.bookName} (Qty: ${book.quantity})`
+    )
+    .join("\n") || "",
+],
 
         ["Visit Date", visit.visitDate || ""],
         ["Visit Time", visit.visitTime || ""],

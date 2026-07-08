@@ -8,7 +8,7 @@ import VisitDetails from "./Component/VisitDetails";
 import Summary from "./Component/Summary";
 import ProtectedRoute from "./Component/ProtectedRoute";
 import DashboardLayout from "./Component/Layout";
-
+import CreateSubAdmin from "./Component/CreateSubAdmin";
 function App() {
   return (
     <Routes>
@@ -22,6 +22,7 @@ function App() {
         }
       >
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/create-subadmin" element={<CreateSubAdmin />}/>
         <Route path="/form" element={<Form />} />
         <Route path="/school-details" element={<SchoolDetails />} />
         <Route path="/AcedemicDetails" element={<AcedemicDetails />} />

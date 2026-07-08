@@ -2,12 +2,15 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-
+import adminRoutes from "./src/routes/adminRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
-
+import connectDB from "./src/config/db.js";
+import dns from "dns";
+dns.setServers(["1.1.1.1","8.8.8.8"])
 dotenv.config();
 
 const app = express();
+connectDB();
 
 // Middleware
 app.use(
@@ -20,7 +23,8 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-// Routes
+// 
+app.use("/api/admin", adminRoutes);
 app.use("/api/auth", authRoutes);
 
 // Test Route

@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+
     },
 
     password: {
@@ -20,8 +21,7 @@ const userSchema = new mongoose.Schema(
 
     role: {
       type: String,
-      enum: ["admin", "subadmin"],
-      default: "subadmin",
+      enum: ["superadmin", "subadmin"],
     },
 
     isActive: {
@@ -29,7 +29,9 @@ const userSchema = new mongoose.Schema(
       default: true,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 export default mongoose.model("User", userSchema);

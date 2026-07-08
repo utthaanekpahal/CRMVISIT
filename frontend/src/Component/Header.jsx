@@ -1,22 +1,19 @@
-import React from 'react'
+import React from "react";
 import {
-  FaHome,
-  FaMapMarkedAlt,
-  FaSitemap,
-  FaUserTie,
-  FaClipboardCheck,
-  FaUsers,
-  FaCog,
   FaBell,
   FaSearch,
   FaBars,
+  FaSignOutAlt,
+  FaUserShield,
 } from "react-icons/fa";
+import { MdOutlineSecurity } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-import axios from 'axios';
 const Header = () => {
-    const navigate = useNavigate();
-   const handleLogout = async () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
     try {
       await axios.post(
         "http://localhost:5000/api/auth/logout",
@@ -29,94 +26,142 @@ const Header = () => {
       console.log(error);
     }
   };
+
   return (
-    <header className="sticky top-0 z-30 bg-white shadow-sm">
-      <div className="px-5 lg:px-10 h-24 flex items-center justify-between">
-    
-        {/* Left */}
-        <div className="flex items-center gap-5">
-          <button className="lg:hidden w-12 h-12 rounded-xl bg-[#2142FF] text-white flex items-center justify-center">
-            <FaBars />
-          </button>
-    
-          <div>
-            <h2 className="text-3xl font-semibold text-[#2142FF] leading-tight">
-              Dashboard
-            </h2>
-            <p className="text-gray-500 text-sm mt-1">
-              Welcome back, Admin
-            </p>
-          </div>
-        </div>
-    
-        {/* Center Buttons */}
-        <div className="flex items-center gap-3">
-          <div className="bg-[#F4F8FF] p-2 rounded-xl">
-            <button className="bg-[#2142FF] font-bold rounded-xl text-white px-4 py-2 text-sm hover:opacity-90 transition">
-              Action
+    <header className="sticky top-0 z-50 bg-white border-b border-blue-100 shadow-sm">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div className="h-20 flex items-center justify-between">
+
+          {/* Left */}
+          <div  className="flex items-center gap-4">
+
+            {/* Mobile Menu */}
+            <button className="lg:hidden w-11 h-11 rounded-xl bg-[#2142FF] text-white flex items-center justify-center">
+              <FaBars />
             </button>
+
+            {/* Logo */}
+            <div className="flex items-center gap-3">
+
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2142FF] to-[#5274ff] flex items-center justify-center shadow-lg shadow-blue-200">
+                <MdOutlineSecurity className="text-white text-3xl" />
+              </div>
+
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold text-[#2142FF] leading-none">
+                  VisitCRM
+                </h2>
+
+                <p className="text-xs text-gray-500">
+                  Visitor Management System
+                </p>
+              </div>
+
+            </div>
           </div>
-    
-          <div className="bg-[#F4F8FF] p-2 rounded-xl">
-            <button   onClick={() => navigate("/form")}
- className="bg-[#2142FF] font-bold rounded-xl text-white px-4 py-2 text-sm hover:opacity-90 transition">
+
+          {/* Center */}
+          <div className="hidden lg:flex items-center gap-8">
+             <button
+              onClick={() => navigate("/dashboard")}
+              className="px-5 py-2.5 rounded-xl bg-[#2142FF] text-white font-semibold hover:bg-blue-700 duration-300"
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => navigate("/create-subadmin")}
+              className="px-5 py-2.5 rounded-xl bg-[#2142FF] text-white font-semibold hover:bg-blue-700 duration-300"
+            >
+              Create Admin
+            </button>
+
+            <button
+              onClick={() => navigate("/form")}
+              className="px-5 py-2.5 rounded-xl bg-[#2142FF] text-white font-semibold hover:bg-blue-700 duration-300"
+            >
+              Visitor Form
+            </button>
+
+            <button className="px-5 py-2.5 rounded-xl bg-[#2142FF] text-white font-semibold hover:bg-blue-700 duration-300">
+              Reports
+            </button>
+
+          </div>
+
+          {/* Right */}
+          <div className="flex items-center gap-7">
+
+            {/* Notification */}
+            <button className="relative w-11 h-11 rounded-xl bg-[#F4F8FF] flex items-center justify-center hover:bg-blue-50">
+
+              <FaBell className="text-[#2142FF]" />
+
+              <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500"></span>
+
+            </button>
+
+            {/* Profile */}
+            <div className="hidden sm:flex items-center gap-3 bg-[#F4F8FF] rounded-xl px-3 py-2">
+
+              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2142FF] to-[#4A6DFF] flex items-center justify-center text-white">
+                <FaUserShield />
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-sm">Admin</h4>
+                <p className="text-xs text-gray-500">
+                  Super Administrator
+                </p>
+              </div>
+
+            </div>
+
+            {/* Logout */}
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white rounded-xl px-4 py-2.5 font-semibold transition"
+            >
+              <FaSignOutAlt />
+              <span className="hidden md:block">Logout</span>
+            </button>
+
+          </div>
+
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="lg:hidden border-t border-gray-100 py-3">
+
+          <div className="grid grid-cols-3 gap-3">
+
+            <button
+              onClick={() => navigate("/create-subadmin")}
+              className="bg-[#2142FF] text-white rounded-xl py-3 text-sm font-semibold"
+            >
+              Admin
+            </button>
+
+            <button
+              onClick={() => navigate("/form")}
+              className="bg-[#2142FF] text-white rounded-xl py-3 text-sm font-semibold"
+            >
               Form
             </button>
-          </div>
-           <div className="bg-[#F4F8FF] p-2 rounded-xl">
-            <button className="bg-[#2142FF] font-bold rounded-xl text-white px-4 py-2 text-sm hover:opacity-90 transition">
-              Report
+
+            <button
+              className="bg-[#2142FF] text-white rounded-xl py-3 text-sm font-semibold"
+            >
+              Reports
             </button>
+
           </div>
-          <div className="bg-[#F4F8FF] p-2 rounded-xl">
-            <button onClick={() => navigate("/dashboard")} className="bg-[#2142FF] font-bold rounded-xl text-white px-4 py-2 text-sm hover:opacity-90 transition">
-              Dashboard
-            </button>
-          </div>
-          
+
         </div>
 
-    
-        {/* Right */}
-        <div className="flex items-center gap-5">
-    
-          {/* Search */}
-          <div className="hidden md:flex items-center bg-[#F4F8FF] rounded-2xl px-4 h-12 w-72">
-            <FaSearch className="text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search..."
-              className="ml-3 bg-transparent outline-none w-full text-sm"
-            />
-          </div>
-    
-          {/* Notification */}
-          <button className="relative w-12 h-12 rounded-2xl bg-[#F4F8FF] flex items-center justify-center hover:bg-blue-50 duration-300">
-            <FaBell className="text-[#2142FF]" />
-            <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full"></span>
-          </button>
-    
-          {/* Profile */}
-          <div className="flex items-center gap-3 bg-[#F4F8FF] rounded-2xl px-3 py-2">
-            <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2142FF] to-[#4A6DFF] flex items-center justify-center text-white font-bold text-lg">
-              A
-            </div>
-    
-            <div className="hidden sm:block leading-tight">
-              <h4 className="font-semibold text-gray-700 text-sm">Admin</h4>
-              <p className="text-xs text-gray-500">Super Administrator</p>
-            </div>
-          </div>
-           <button
-        onClick={handleLogout}
-        className="bg-red-500 px-4 py-2 rounded-xl text-white font-bold hover:bg-red-600"
-      >
-        Logout
-      </button>
-        </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

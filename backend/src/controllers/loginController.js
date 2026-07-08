@@ -5,16 +5,13 @@ import User from "../model/User.js";
 export const login = async (req, res) => {
   try {
     // Find user in database
-    const { email, password } = req.body;
+const { email, password } = req.body;
 
 const cleanEmail = email.trim();
 
 const user = await User.findOne({
   email: { $regex: `^${cleanEmail}$`, $options: "i" },
 });
-
-console.log("User Found:", user);
-console.log(user);
     if (!user) {
       return res.status(401).json({
         success: false,

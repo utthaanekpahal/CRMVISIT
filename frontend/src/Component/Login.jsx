@@ -28,12 +28,20 @@ const [loading, setLoading] = useState(false);
         withCredentials: true,
       }
     );
-
     console.log(response.data);
 
     alert(response.data.message);
+    const user = response.data.user;
 
-    navigate("/dashboard",{replace: true });
+     if(user.role === "superadmin"){
+   navigate("/dashboard", {replace:true});
+}
+else if(user.role === "subadmin"){
+   navigate("/form-subadmin",{replace:true});
+}
+else{
+  console.log("No super or No Sub")
+}
 
   } catch (error) {
     console.error(error);

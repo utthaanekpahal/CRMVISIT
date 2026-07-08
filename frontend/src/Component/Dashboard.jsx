@@ -106,11 +106,6 @@ const [user, setUser] = useState(null);
               <h2 className="text-4xl font-bold mt-4">12</h2>
               <p className="text-green-500 text-sm mt-4">6 Online</p>
             </div>
-            <div className="group bg-white rounded-3xl p-6 shadow-lg border border-blue-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
-              <p className="text-gray-500 text-sm">Views</p>
-              <h2 className="text-4xl font-bold mt-4">1000</h2>
-              <p className="text-green-500 text-sm mt-4">6 Online</p>
-            </div>
 
           </div>
 

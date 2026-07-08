@@ -91,23 +91,24 @@ const [loading, setLoading] = useState(false);
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center items-center h-full text-white px-10 lg:px-14 text-center">
+     <div className="relative z-10 flex flex-col justify-center items-center h-full text-white px-10 lg:px-14 text-center">
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-wider drop-shadow-lg">
-          C.R.M
-        </h1>
+  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-[8px] drop-shadow-xl">
+    C.R.M
+  </h1>
 
-        <h2 className="mt-5 text-lg sm:text-xl lg:text-2xl font-semibold">
-          Customer Relationship Management
-        </h2>
+  <h2 className="mt-5 text-xl sm:text-2xl lg:text-3xl font-semibold">
+    School Visit Management System
+  </h2>
 
-        <p className="mt-5 max-w-sm text-sm sm:text-base leading-7 text-blue-100">
-          Lorem Ipsum is simply dummy text of the printing and
-          typesetting industry.
-        </p>
+  <p className="mt-6 max-w-md text-sm sm:text-base leading-8 text-blue-100">
+    A smart platform to manage school visits, monitor field executives,
+    track follow-ups, maintain district-wise records, and generate
+    real-time reports from one centralized system.
+  </p>
 
-      </div>
-    </div>
+</div>
+</div>
 
 
     {/* ================= RIGHT PANEL ================= */}
